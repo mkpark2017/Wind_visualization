@@ -1,0 +1,11 @@
+<library path="lib/libwind_visualization">
+  <class name="wind_visualization/Wind"
+         type="wind_visualization::WindDisplay"
+         base_class_type="rviz::Display">
+    <description>
+      Displays direction and scale of wind velocity from wind messages.
+    </description>
+    <message_type>wind_visualization/Wind</message_type>
+  </class>
+
+</library>
