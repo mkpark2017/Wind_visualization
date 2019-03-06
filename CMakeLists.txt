@@ -55,8 +55,8 @@ link_directories(${catkin_LIBRARY_DIRS})
 add_executable(wind_visual_node src/Wind_test.cpp)
 
 set(SRC_FILES
-  src/wind_display.cpp
-  src/wind_visual.cpp
+  src/wind_display_nswe.cpp
+  src/wind_visual_nswe.cpp
 )
 
 add_library(${PROJECT_NAME} ${SRC_FILES})

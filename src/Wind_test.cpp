@@ -87,8 +87,8 @@ int main(int argc, char **argv)
   while(nh.ok())
   {
       ros::spinOnce();			//check the incoming messages
-      wind_data.header.frame_id = "firefly/base_link";
-      wind_data.header.stamp = ros::Time(0);
+      wind_data.header.frame_id = "firefly1/base_link";
+      wind_data.header.stamp = ros::Time::now();
 
       m_pub.publish(wind_data);
 

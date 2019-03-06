@@ -99,25 +99,24 @@ namespace wind_visualization
 
     float alpha = alpha_property_->getFloat();
 //    Ogre::ColourValue color; // = color_property_->getOgreColor();
-    const geometry_msgs::Vector3& color = msg->wind;
-
-/*
-    float nrm = sqrt(color.x * color.x + color.y * color.y + color.z * color.z) * 2;
-
-    float r = (color.x/nrm + 0.5);
-    float g = (color.y/nrm + 0.5);
-    float b = (color.z/nrm + 0.5);
-*/
-
-
-
+    const geometry_msgs::Vector3& wind_str = msg->wind;
     float r = 0;
     float g = 0;
     float b = 0;
+
+/* To set color in direction continuously */
+    float nrm = sqrt(wind_str.x * wind_str.x + wind_str.y * wind_str.y + wind_str.z * wind_str.z) * 2;
+
+    r = (wind_str.x/nrm + 0.5);
+    g = (wind_str.y/nrm + 0.5);
+    b = (wind_str.z/nrm + 0.5);
+
+
+/* Only set color in 4 NSEW direction */
 /*
-    if( color.x * color.x > color.y * color.y )
+    if( wind_str.x * wind_str.x > wind_str.y * wind_str.y )
     {
-      if (color.x >= 0)
+      if (wind_str.x >= 0)
         r = 1;
       else
       {
@@ -127,14 +126,16 @@ namespace wind_visualization
     }
     else
     {
-      if (color.y >= 0)
+      if (wind_str.y >= 0)
         g = 1;
       else
         b = 1;
     }
 */
 
-    float nrm = sqrt(color.x * color.x + color.y * color.y + color.z * color.z);
+
+/* To set color by strength */
+/*    float nrm = sqrt(color.x * color.x + color.y * color.y + color.z * color.z);
 
     if ( nrm <= 1/4 )
       b = 0.5 + 2*nrm;
@@ -156,6 +157,7 @@ namespace wind_visualization
     }
     else
       r = -2*nrm + 4.5;
+*/
 
     visual->setColor( r, g, b, alpha );
     visuals_.push_back(visual);
